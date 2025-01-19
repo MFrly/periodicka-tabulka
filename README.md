@@ -1,0 +1,1 @@
+# periodicka-tabulka
