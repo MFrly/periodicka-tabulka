@@ -34,11 +34,31 @@ def calculate_average_mass(elements):
 # Generování HTML souboru
 def generate_html(elements, file_path):
     with open(file_path, mode='w', encoding='utf-8') as file:
-        file.write('<table border="1">\n')
+        # HTML hlavička
+        file.write('<!DOCTYPE html>\n')
+        file.write('<html lang="en">\n')
+        file.write('<head>\n')
+        file.write('<meta charset="UTF-8">\n')
+        file.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">\n')
+        file.write('<title>HTML Table</title>\n')
+        file.write('<style>\n')
+        file.write('table { border-collapse: collapse; width: 100%; }\n')
+        file.write('th, td { border: 1px solid black; padding: 8px; text-align: left; }\n')
+        file.write('th { background-color: #f2f2f2; }\n')
+        file.write('</style>\n')
+        file.write('</head>\n')
+        file.write('<body>\n')
+        
+        # HTML tělo s tabulkou
+        file.write('<table>\n')
         file.write('<tr>' + ''.join(f'<th>{key}</th>' for key in elements[0].keys()) + '</tr>\n')
         for element in elements:
             file.write('<tr>' + ''.join(f'<td>{value}</td>' for value in element.values()) + '</tr>\n')
         file.write('</table>\n')
+        
+        # Uzavření HTML
+        file.write('</body>\n')
+        file.write('</html>\n')
 
 # Generování JSON souboru
 def generate_json(elements, file_path):
@@ -144,3 +164,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
